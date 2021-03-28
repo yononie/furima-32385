@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| product       | string     | null: false                    |
-| category      | text       | null: false                    |
-| status        | string     | null: false                    |
-| explanation   | text       | null: false                    |
-| value         | integer    | null: false                    |
-| delivery_fee  | integer    | null: false                    |
-| region        | string     | null: false                    |
-| delivery_time | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| product         | string     | null: false                    |
+| category_id     | integer    | null: false                    |
+| status_id       | integer    | null: false                    |
+| explanation_id  | integer    | null: false                    |
+| value_id        | integer    | null: false                    |
+| delivery_fee_id | integer    | null: false                    |
+| region_id       | integer    | null: false                    |
+| delivery_time   | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -43,8 +43,6 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| purchased_item | string     | null: false                    |
-| buyer          | string     | null: false                    |
 | user           | references | null: false, foreign_key: true |
 | item           | references | null: false, foreign_key: true |
 
@@ -52,19 +50,19 @@
 
 - belongs_to :item
 - belongs_to :user
+- has_one :destination
 
 ## destinations テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| prefecture     | string     | null: false                    |
-| city           | string     | null: false                    |
-| address        | string     | null: false                    |
-| postal_code    | integer    | null: false                    |
-| user           | references | null: false, foreign_key: true |
-| item           | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| region_id     | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     | null: false                    |
+| postal_code   | integer    | null: false                    |
+| purchase_log  | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :purchase_log
