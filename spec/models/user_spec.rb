@@ -82,8 +82,13 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
       end
-      it 'passwordに半角英数が混合で入力されていなければ登録できない' do
+      it 'passwordに半角英数が混合で入力されていなければ登録できない(数字のみ)' do
         @user.password = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include 'Password Include both letters and numbers'
+      end
+      it 'passwordに半角英数が混合で入力されていなければ登録できない(半角英字のみ)' do
+        @user.password = 'aaaaaa'
         @user.valid?
         expect(@user.errors.full_messages).to include 'Password Include both letters and numbers'
       end
@@ -126,6 +131,11 @@ RSpec.describe User, type: :model do
         @user.kana_last = 'あ亜?'
         @user.valid?
         expect(@user.errors.full_messages).to include 'Kana last is invalid. Input full-width katakana characters.'
+      end
+      it 'ユーザー本名フリガナの名前は、全角（カタカナ）以外では登録できない' do
+        @user.birthday = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Birthday can't be blank"
       end
     end
   end
