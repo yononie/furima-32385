@@ -137,7 +137,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include 'Kana last is invalid. Input full-width katakana characters.'
       end
-      it '誕生日が空では登録できない' do
+      it 'ユーザー本名フリガナの名前は、全角（カタカナ）以外では登録できない' do
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include "Birthday can't be blank"
