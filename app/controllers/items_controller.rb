@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  #ユーザー管理機能マージ後、devise提供の元 before_action :authenticate_user!, only: [:new]を追記予定
+  before_action :authenticate_user!, only: [:new]
   def index
     @items = Item.all
   end

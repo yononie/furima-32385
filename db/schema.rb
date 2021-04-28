@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_04_18_161332) do
   end
 
   create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -43,20 +42,22 @@ ActiveRecord::Schema.define(version: 2021_04_18_161332) do
     t.integer "delivery_time_id", null: false
     t.integer "value", null: false
     t.text "explanation", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "nickname", limit: 255, null: false
-    t.string "first_name", limit: 255, null: false
-    t.string "last_name", limit: 255, null: false
-    t.string "kana_first", limit: 255, null: false
-    t.string "kana_last", limit: 255, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "nickname", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "kana_first", null: false
+    t.string "kana_last", null: false
     t.date "birthday", null: false
-    t.string "reset_password_token", limit: 255
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
@@ -66,4 +67,5 @@ ActiveRecord::Schema.define(version: 2021_04_18_161332) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "users"
 end

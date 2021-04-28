@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_one :purchase_log
-  belongs_to :user, optional: true # <ユーザー管理機能マージ後処分 >
+  belongs_to :user
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
