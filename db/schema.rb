@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_161332) do
   end
 
   create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
