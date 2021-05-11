@@ -1,8 +1,8 @@
 class PurchaseLogsController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
-  before_action :set_item, only: [:index]
-  before_action :solditem_matcher, only: [:index]
-  before_action :item_user_matcher, only: [:index]
+  before_action :authenticate_user!
+  before_action :set_item
+  before_action :solditem_matcher
+  before_action :item_user_matcher
   def index
     @destination_purchase_log = DestinationPurchaseLog.new
   end

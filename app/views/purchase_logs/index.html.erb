@@ -6,14 +6,14 @@
       購入内容の確認
     </h1>
     <div class='buy-item-info'>
-      <%= image_tag Item.find(params[:item_id]).image, class: 'buy-item-img' %>
+      <%= image_tag @item.image, class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
-          <%= Item.find(params[:item_id]).product %>
+          <%= @item.product %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= Item.find(params[:item_id]).value %></p>
-          <p class='item-price-sub-text'><%= Item.find(params[:item_id]).delivery_fee[:name] %></p>
+          <p class='item-price-text'>¥<%= @item.value %></p>
+          <p class='item-price-sub-text'><%= @item.delivery_fee[:name] %></p>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-        ¥<%= Item.find(params[:item_id]).value %>
+        ¥<%= @item.value %>
       </p>
     </div>
 
