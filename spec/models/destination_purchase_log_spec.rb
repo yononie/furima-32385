@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe DestinationPurchaseLog, type: :model do
   before do
     @destination_purchase_log = FactoryBot.build(:destination_purchase_log)
-    @destination_purchase_log.user_id = Faker::Number.number(digits: 2)
-    @destination_purchase_log.item_id = Faker::Number.number(digits: 2)
+    @destination_purchase_log.user_id = FactoryBot.build(:user)
+    @destination_purchase_log.item_id = FactoryBot.build(:item)
   end
 
   context '内容に問題ない場合' do
@@ -62,6 +62,17 @@ RSpec.describe DestinationPurchaseLog, type: :model do
     @destination_purchase_log.region_id = '0'
     @destination_purchase_log.valid?
     expect(@destination_purchase_log.errors.full_messages).to include('Region must be other than 0')
+  end
+  it 'user_idが空の場合、保存できない' do
+    @destination_purchase_log.user_id = ""
+    @destination_purchase_log.valid?
+    binding.pry
+    expect(@destination_purchase_log.errors.full_messages).to include("User can't be blank")
+  end
+  it 'item_idが空の場合、保存できない' do
+    @destination_purchase_log.item_id = nil
+    @destination_purchase_log.valid?
+    expect(@destination_purchase_log.errors.full_messages).to include("Item can't be blank")
   end
   it 'tokenが空では登録できないこと' do
     @destination_purchase_log.token = nil
