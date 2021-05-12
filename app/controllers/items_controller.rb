@@ -21,9 +21,13 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase_logs = @item.purchase_log
   end
 
   def edit
+    if @item.purchase_log != nil 
+    redirect_to root_path
+    end
   end
 
   def update
@@ -51,8 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def item_user_matcher
-    unless current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 end
