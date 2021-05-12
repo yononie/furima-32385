@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @purchase_log = PurchaseLog.new
     @purchase_logs = @item.purchase_log
   end
 

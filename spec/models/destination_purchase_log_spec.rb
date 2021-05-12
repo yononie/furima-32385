@@ -59,7 +59,7 @@ RSpec.describe DestinationPurchaseLog, type: :model do
     expect(@destination_purchase_log.errors.full_messages).to include("Address can't be blank")
   end
   it 'region_idが0の場合、保存できない' do
-    @destination_purchase_log.region_id = '0'
+    @destination_purchase_log.region_id = 0
     @destination_purchase_log.valid?
     expect(@destination_purchase_log.errors.full_messages).to include('Region must be other than 0')
   end
