@@ -26,6 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.purchase_log != nil 
+    redirect_to root_path
+    end
   end
 
   def update
