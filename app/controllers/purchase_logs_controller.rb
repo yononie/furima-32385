@@ -12,9 +12,9 @@ class PurchaseLogsController < ApplicationController
     if @destination_purchase_log.valid?
       pay_item
       @destination_purchase_log.save
-      redirect_to root_path
+      return redirect_to root_path
     else
-      render :index
+      redirect_to action: :index
     end
   end
 
