@@ -27,7 +27,7 @@
       </p>
     </div>
 
-    <%= form_with(model: @destination_purchase_log, url: item_purchase_logs_path, id: 'charge-form', class: 'transaction-form-wrap',local: true) do |f| %>
+    <%= form_with model: @destination_purchase_log, url: item_purchase_logs_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
 
     <%= render 'shared/error_messages', model: @destination_purchase_log %>
 

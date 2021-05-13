@@ -5,9 +5,11 @@ class PurchaseLogsController < ApplicationController
   before_action :item_user_matcher
   def index
     @destination_purchase_log = DestinationPurchaseLog.new
+    # binding.pry
   end
 
   def create
+    # binding.pry
     @destination_purchase_log = DestinationPurchaseLog.new(order_params)
     if @destination_purchase_log.valid?
       pay_item
