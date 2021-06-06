@@ -12,6 +12,7 @@
     <%= flash[:alert] %>
   </div>
   <div class="form-group">
+  <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
       <span class="indispensable">必須</span>
