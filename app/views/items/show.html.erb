@@ -77,8 +77,10 @@
   </div>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
+  <% if user_signed_in? %>
+    <%= form_with model: [@item, @message], local: true do |f| %>
+      <form>
+      <%= f.text_area :text, class:"comment-text" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -88,7 +90,20 @@
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
       </button>
-    </form>
+      </form>
+    <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    <h4>＜コメント一覧＞</h4>
+    <div id="comments">
+      <% @messages.each do |message| %>
+        <p>
+        <strong><%= message.user.nickname %>：</strong>
+          <%= message.text %>
+        </p>
+      <% end %>
+      </div>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">

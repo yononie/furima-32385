@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   has_one :purchase_log
   belongs_to :user
   has_one_attached :image
+  has_many :messages, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_time

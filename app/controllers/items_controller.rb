@@ -22,6 +22,8 @@ class ItemsController < ApplicationController
 
   def show
     @purchase_logs = @item.purchase_log
+    @message = Message.new
+    @messages = @item.messages.includes(:user).order("created_at DESC")
   end
 
   def edit
