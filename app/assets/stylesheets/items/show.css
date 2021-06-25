@@ -184,6 +184,11 @@
   margin: 10px 5px 0 0;
 }
 
+.comments {
+  padding: 5px;
+  margin-top: 15px;
+}
+
 .links {
   display: flex;
   justify-content: space-between;
